@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      >
+    <h:head>
+        <title>Registro USuario</title>
+    </h:head>
+    <h:body>
+    
+       
+    	      <h:form>  
+    	      
+        <h2><h:outputText value="AQUI ENCONTRE. "  font-size="12px"  font-color="red"/></h2>
+        
+        <td></td>
+        <p:commandLink action="RegistrarUSuario.xhtml" value="Registrate" process="@this" >
+        <h:outputText  style="font-weight:bold" value="Iniciar sesion" />
+        </p:commandLink>
+        <p:spacer style="width:20px; height:1px"/>
+        <p:commandLink action="inicio.xhtml" value="pagina principal" process="@this" >
+        <h:outputText  style="font-weight:bold" value="Inicio" />
+        </p:commandLink>
+        
+        <table>
+    	 
+        <p:panel header="Regístrate" style="width:400px"> 
+        <h:panelGrid columns="2" cellpadding="5"> 
+        
+        
+      
+            <h:outputText value="Nombre " />  
+            <p:inputMask value="#{RegistroUsuario.usuario.nombre}" >
+             <f:validateRegex  pattern="[A-Za-z]+" /> </p:inputMask>
+            
+             <h:outputText value="Apellido " />  
+            <p:inputMask value="#{RegistroUsuario.usuario.apellido}" >
+            <f:validateRegex  pattern="[A-Za-z]+" /> </p:inputMask>
+            
+             <h:outputText value="Email " />  
+            <p:inputMask value="#{RegistroUsuario.usuario.email}"  validatorMessage="Formato  no válido" > 
+            <f:validateRegex  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /> </p:inputMask>    
+            
+             <h:outputText value="Usuario " />  
+            <p:inputMask value="#{RegistroUsuario.usuario.usuario}" /> 
+            
+             <h:outputText value="Contraseña " />  
+            <p:password value="#{RegistroUsuario.usuario.contrasenia}" /> 
+              
+          <!--   <h:outputText value="Teléfono " />  
+            <p:inputMask value="#{RegistroUsuario.usuario.telefono}"  />
+               -->
+              
+         <!--   <h:outputText value="Sexo " />  
+            <p:selectOneRadio id="options" value="#{formBean.number}">  
+            <f:selectItem itemLabel="Masculino" itemValue="1" />  
+            <f:selectItem itemLabel="Femenino" itemValue="2" />  
+            </p:selectOneRadio>     --> 
+  
+           <p:commandButton action="#{RegistroUsuario.guardar}" value="guardar"  update="@form" /> 
+		   <p:commandButton action="inicio.xhtml" value="cancelar" process="@this" />
+      </h:panelGrid>  
+    </p:panel>  
+   
+         </table>
+   
+    
+    <h2><h:outputText value=" "  font-size="12px"  font-color="red"/></h2>
+    
+    <p:megaMenu  style="width:880px" >  
+	    <p:menuitem value="inmuebles"  />  
+        <p:menuitem value="empleos" /> 
+        <p:menuitem value="vehìculos"  />
+        <p:menuitem value="mascotass"  />
+        <p:menuitem value="servicios" /> 
+        <p:menuitem value="objetos perdidos" />
+        </p:megaMenu>  
+        
+        
+          
+ 
+           <!--   <h:dataTable value="#{clase.persona}" var="per">
+             <h:column>
+               <f:facet name="header">
+                 <h:outputText value="NOMBRE"/>
+               </f:facet>
+               <h:outputText value="#{per.nombre}"/>
+             </h:column>
+             <h:column>
+               <f:facet name="header">
+                 <h:outputText value="APELLIDO"/>
+               </f:facet>
+               <h:outputText value="#{per.apellido}"/>
+             </h:column>
+             <h:column>
+               <f:facet name="header">
+                 <h:outputText value="DIRECCION"/>
+                </f:facet>
+                <h:outputText value="#{per.direccion}"/>
+                </h:column>
+            </h:dataTable>    -->
+</h:form>     
+    
+    
+    </h:body>
+</html>

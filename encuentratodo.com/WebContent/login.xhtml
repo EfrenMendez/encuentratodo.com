@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      >
+    <h:head>
+        <title>Consulta el año</title>
+    </h:head>
+    <h:body>
+    <h:form>	
+    <table>
+			 <tr>
+			      <td><span><p:outputLabel value="Nombre:" /></span></td>
+			      <td><span><p:inputText required="true" maxlength="15" value="#{LoginControlador.usuario}" label="nombre" /></span></td>
+			 </tr>
+			 <tr>		
+					<td><span><p:outputLabel value="Contraseña:" /></span></td>
+					<td><span><p:password value="#{LoginControlador.pwd}" feedback="true|false" /></span></td>
+			 </tr>		
+			 <tr>
+			      <td><span><p:commandButton action="#{LoginControlador.ingresar}" value="Ingresar" update="msj"/> </span></td>
+		           <td><span><p:commandButton action="index.xhtml" value="cancelar" process="@this" /></span></td>
+     
+     
+			 </tr>
+			 <p:growl id="msj"/>
+			 </table>
+			 
+			 
+			 
+  	</h:form>
+    </h:body>
+</html>

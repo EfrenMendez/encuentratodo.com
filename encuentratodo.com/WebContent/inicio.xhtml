@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      >
+    <h:head>
+        <title>Inicio</title>
+    </h:head>
+    <h:body>
+    	<h:form>
+    	
+    	
+        <!--solo es para mostrar el id del usuario-->
+    	<p:outputLabel value="Bienvenido,  #{LoginControlador.obtenerValorSesion('administrador')}"  rendered="#{LoginControlador.tieneRol('administrador')}" />
+        <p:outputLabel value="Bienvenido,  #{LoginControlador.obtenerValorSesioIDn('identificador')}"  />
+        <br></br>
+        <br></br>
+    	<!--abre un metodo que cierra la sesion -->
+    	<p:commandLink action="#{LoginControlador.cerrarSesion}" value="Cerrar sesiòn" process="@this" rendered="#{LoginControlador.tieneRol('administrador')}">
+        <h:outputText value="Cerrar sesión" />
+        </p:commandLink>
+       
+    	<!--abilita botones dependiendo del rol que tiene-->
+
+
+    
+      <h2><h:outputText value="AQUI ENCONTRE. "  font-size="12px"  font-color="red"/></h2>
+      
+    	<p:commandLink action="login.xhtml" value="inicia" process="@this" >
+        <h:outputText  style="font-weight:bold" value="inicia" />
+        </p:commandLink> 
+        
+       <p:spacer style="width:20px; height:1px"/>
+        
+        <p:commandLink action="RegistrarUsuario.xhtml" value="Registrate" process="@this" >
+        <h:outputText  style="font-weight:bold" value="registrate" />
+        </p:commandLink> 
+        
+        <p:spacer style="width:1600px; height:10px"/>
+    	
+    	<p:panel >  
+    	<p:menuitem value="inmuebles"  /> 
+    	</p:panel>
+    	
+    	<!-- Comentario en una página HTML -->  
+    	<p:menubar style="height:100px">	
+    	<p:menuitem value="Aquí_encontre"  />
+    	</p:menubar>
+ 
+    
+    <p:megaMenu  style="width:880px" >  
+  
+  
+        <p:menuitem value="inmuebles"  />  
+       <!--   <p:menuitem value="empleos" />      -->
+        <p:menuitem value="vehìculos"  />
+        <p:menuitem value="mascotass"  />
+        <p:menuitem value="servicios" /> 
+        <p:menuitem value="objetos perdidos" />
+        
+    </p:megaMenu>  
+  
+  	
+    		<h:panelGrid columns="444" cellpadding="5">  
+        <h:outputLabel for="name" value="buscar:" style="font-weight:bold"/>  
+       <p:inputText id="name" value="#{pprBean.firstname}" />  
+        <p:commandButton value="Submit" update="display"/>  
+        <h:outputText value="#{pprBean.firstname}" id="display" />   
+          </h:panelGrid> 
+  
+    	</h:form>
+    
+    
+    
+    
+      <h:selectOneMenu value="#{workflowProcEditBean.performedBy}">
+    <f:selectItem itemValue="O" itemLabel="Originator" />
+    <f:selectItem itemValue="R" itemLabel="Role" />
+    <f:selectItem itemValue="E" itemLabel="Employee" />
+    <f:ajax event="change" execute="@this" render="perfbyselection" />
+</h:selectOneMenu>
+<h:panelGroup id="perfbyselection">
+    <h:selectOneMenu id="performedbyroleid" value="#{workflowProcEditBean.performedByRoleID}"
+                     rendered="#{workflowProcEditBean.performedBy eq 'R'}">
+        <f:selectItem itemLabel="- Choose One -" itemValue="" />
+        <f:selectItems value="#{workflowProcEditBean.roles}" />
+    </h:selectOneMenu>
+    <h:selectOneMenu id="performedbyempid" value="#{workflowProcEditBean.performedByEmpID}"
+                     rendered="#{workflowProcEditBean.performedBy eq 'E'}">
+        <f:selectItem itemLabel="- Choose One -" itemValue="" />
+        <f:selectItems value="#{workflowProcEditBean.employees}" />
+    </h:selectOneMenu>
+</h:panelGroup>
+
+    
+    </h:body>
+</html>

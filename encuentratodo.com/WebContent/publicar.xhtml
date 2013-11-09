@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      >
+    <h:head>
+        <title>publicaro</title>
+    </h:head>
+    <h:body>
+    
+       
+    	    
+        <h2><h:outputText value="AQUI ENCONTRE.com "  font-size="12px"  font-color="red"/></h2>
+        <h2><h:outputText value="Encuentra todo.com "  font-size="12px"  font-color="red"/></h2>
+        <p:commandLink action="login.xhtml" value="Iniciar sesion" process="@this" >
+        <h:outputText  style="font-weight:bold" value="Iniciar sesion" />
+        </p:commandLink>
+        <td></td>
+        <p:commandLink action="login.xhtml" value="Registrate" process="@this" >
+        <h:outputText  style="font-weight:bold" value="Iniciar sesion" />
+        </p:commandLink>
+        <p:commandLink action="inicio.xhtml" value="Registrate" process="@this" >
+        <h:outputText  style="font-weight:bold" value="Inicio" />
+        </p:commandLink>
+    	<br></br>
+    	<br></br>
+    	<br></br>
+    	<br></br>
+    	<h:form>
+        <h3>1) Seleccione Categoría</h3>
+         <p:separator /> 
+          <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
+  
+        <h:outputText value="Elije Categorìa: " />  
+        <p:selectOneMenu value="#{buttonBean.number}">  
+            <f:selectItem itemLabel="Selecciona" itemValue="" />  
+            <f:selectItem itemLabel="Inmuebles" itemValue="1" />  
+            <f:selectItem itemLabel="Vehìculos" itemValue="2" />  
+            <f:selectItem itemLabel="Mascotas" itemValue="3" />  
+            <f:selectItem itemLabel="Servicios" itemValue="4" />  
+            <f:selectItem itemLabel="Objetos perdidos" itemValue="5" /> 
+        </p:selectOneMenu>  
+  
+        <h:outputText value="Grouping: " />  
+        <p:selectOneMenu value="#{formBean.car}">  
+            <f:selectItem itemLabel="Select One" itemValue="" />  
+            <f:selectItems value="#{formBean.cars}" />  
+        </p:selectOneMenu>  
+  
+        
+    </h:panelGrid>  
+    
+    <h:panelGroup>
+        <h3>2) Datos del anuncio</h3>
+        <p:separator /> 
+       Título
+        <h:panelGrid columns="444" cellpadding="5">   
+       <p:inputText id="name" value="#{pprBean.firstname}" />  
+       </h:panelGrid>
+       
+      
+        
+        Descripcíon 
+        <h:panelGrid columns="444" cellpadding="5">   
+        <p:inputTextarea rows="10" cols="50" completeMethod="#{autoCompleteBean.completeArea}" queryDelay="750" minQueryLength="4"  style="width:800px; height:150px"/>
+        </h:panelGrid>
+       
+        Precio
+       <h:panelGrid columns="444" cellpadding="5">  
+       <p:inputText id="name" value="#{pprBean.firstname}" />
+       </h:panelGrid>
+         
+        <h3>3) Fotos</h3>
+        <p:separator /> 
+        
+        <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced" dragDropSupport="true"  
+            update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />  
+  
+         <p:growl id="messages" showDetail="true"/>  
+    
+        
+        <h3>4) Datos para que te contacten</h3>
+        <p:separator /> 
+           <h:panelGrid>
+         <h:outputText value="Email " />  
+            <p:inputMask value="#{maskController.date}"  validatorMessage="Formato  no válido" > 
+            <f:validateRegex  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /> </p:inputMask>    
+              
+            <h:outputText value="Teléfono " />  
+            <p:inputMask value="#{maskController.phone}" mask="(999) 999-9999"/>  
+             </h:panelGrid>
+        </h:panelGroup>
+       
+    <h2><h:outputText value=" "  font-size="12px"  font-color="red"/></h2>
+    
+    <p:megaMenu  style="width:880px" >  
+	    <p:menuitem value="inmuebles"  />  
+        <p:menuitem value="empleos" /> 
+        <p:menuitem value="vehìculos"  />
+        <p:menuitem value="mascotass"  />
+        <p:menuitem value="servicios" /> 
+        <p:menuitem value="objetos perdidos" />
+        </p:megaMenu>  
+</h:form>     
+    
+    
+    </h:body>
+</html>
